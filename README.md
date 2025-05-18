@@ -19,8 +19,6 @@ A command-line tool that validates credit card numbers using the Luhn algorithm,
 Download the latest executable for your OS:
 
 - [Windows (.exe)](https://example.com/download/ccvalidator.exe)
-- [MacOS](https://example.com/download/ccvalidator-mac)
-- [Linux](https://example.com/download/ccvalidator-linux)
 
 # Interactive mode
 ./ccvalidator
@@ -46,8 +44,6 @@ GOOS=windows GOARCH=amd64 go build -o ccvalidator.exe
 
 # Generate test coverage
 go test -coverprofile=coverage.out
-go tool cover -html=coverage.out
-
 
 ### Key Sections Included:
 1. **Badges** - Visual indicators for version/license
@@ -60,6 +56,6 @@ go tool cover -html=coverage.out
 
 ### From Source
 ```bash
-git clone [https://github.com/Leul0M/CreditCard_Validator.git]
+git clone (https://github.com/Leul0M/CreditCard_Validator.git)
 cd credit-card-validator
 go build -o ccvalidator
