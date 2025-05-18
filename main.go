@@ -5,6 +5,7 @@ import (
 )
 
 // cli app to validate credit card numbers using Luhn algorithm
+
 func main() {
 	fmt.Println("Credit Card Validator💳")
 	fmt.Println("Enter card numbers to check (type 'q' to quit)")

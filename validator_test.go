@@ -3,6 +3,7 @@ package main
 import "testing"
 
 // TestValidString tests the ValidString function
+
 // for now it workes 🤷‍♂️
 func TestValidString(t *testing.T) {
 	tests := []struct {

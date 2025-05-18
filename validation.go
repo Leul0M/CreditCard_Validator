@@ -6,6 +6,7 @@ import (
 )
 
 // ValidString checks if a credit card number is valid using Luhn algorithm
+
 func ValidString(cardNumber string) bool {
 	cleaned := sanitizeInput(cardNumber)
 	if len(cleaned) < 2 {
