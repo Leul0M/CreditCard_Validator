@@ -26,6 +26,9 @@ func ValidString(cardNumber string) bool {
 	return luhnSum%10 == 0
 }
 
+// sanitizeInput removes all non-digit characters from the input string
+// and returns a cleaned string
+// This is useful for ensuring that the input is in a valid format
 func sanitizeInput(cardNumber string) string {
 	var builder strings.Builder
 	for _, r := range cardNumber {
