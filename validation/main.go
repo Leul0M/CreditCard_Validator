@@ -2,55 +2,51 @@ package main
 
 import (
 	"fmt"
+	"strings"
+	"unicode"
 )
 
-// checks the number is valid or not based on Luhn algorithm
 func main() {
-	number := 00000000 // Example number
-	if Valid(number) {
-		fmt.Println("The Number:", number, "is a valid number ✅")
+	number := 79927398713
+	numberStr := fmt.Sprintf("%d", number)
+	if ValidString(numberStr) {
+		fmt.Println(number, "is a valid number")
 	} else {
-		fmt.Println("The Number:", number, "is not a valid number ❌")
+		fmt.Println(number, "is not a valid number")
 	}
 }
 
-// CalculateLuhn calculates the check number based on Luhn algorithm
-// It returns 0 if the number is already valid
-func CalculateLuhn(number int) int {
-	checkNumber := checksum(number)
-
-	if checkNumber == 0 {
-		return 0
+// sanitizeInput removes all non-digit characters from the string.
+func sanitizeInput(cardNumber string) string {
+	var builder strings.Builder
+	for _, r := range cardNumber {
+		if unicode.IsDigit(r) {
+			builder.WriteRune(r)
+		}
 	}
-	return 10 - checkNumber
+	return builder.String()
 }
 
-// "Valid" check number is valid or not based on Luhn algorithm
-func Valid(number int) bool {
-	if number < 0 {
+// ValidString checks if a credit card number (string) is valid using Luhn's algorithm.
+func ValidString(cardNumber string) bool {
+	cleaned := sanitizeInput(cardNumber)
+	if len(cleaned) < 2 { // Minimum length for Luhn (e.g., "0" is invalid)
 		return false
 	}
-	return (number%10+checksum(number/10))%10 == 0
-}
 
-// checksum calculates the Luhn checksum of a number
-// It returns the checksum digit
-func checksum(number int) int {
-	var luhn int
+	luhnSum := 0
+	for i, r := range cleaned {
+		digit := int(r - '0') // Convert rune to int (e.g., '5' → 5)
 
-	for i := 0; number > 0; i++ {
-		cur := number % 10
-
-		if i%2 == 0 { // even
-			cur = cur * 2
-			if cur > 9 {
-				cur = cur%10 + cur/10
+		// Double every second digit from the right
+		if (len(cleaned)-i)%2 == 0 {
+			digit *= 2
+			if digit > 9 {
+				digit = digit%10 + digit/10
 			}
-
 		}
-
-		luhn += cur
-		number = number / 10
+		luhnSum += digit
 	}
-	return luhn % 10
+
+	return luhnSum%10 == 0
 }
