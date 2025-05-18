@@ -39,6 +39,9 @@ $ ./ccvalidator "1234-5678-9012-3456"
 # Run tests
 go test -v
 
+# Run CLI
+go run .
+
 # Build for Windows
 GOOS=windows GOARCH=amd64 go build -o ccvalidator.exe
 
