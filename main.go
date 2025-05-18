@@ -5,15 +5,15 @@ import (
 )
 
 func main() {
-	fmt.Println("Credit Card Validator")
-	fmt.Println("Enter card numbers to check (type 'exit' to quit)")
+	fmt.Println("Credit Card Validator💳")
+	fmt.Println("Enter card numbers to check (type 'q' to quit)")
 
 	for {
 		fmt.Print("Enter card number: ")
 		var input string
 		fmt.Scanln(&input)
 
-		if input == "exit" {
+		if input == "q" {
 			break
 		}
 
