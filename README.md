@@ -42,9 +42,6 @@ go test -v
 # Build for Windows
 GOOS=windows GOARCH=amd64 go build -o ccvalidator.exe
 
-# Generate test coverage
-go test -coverprofile=coverage.out
-
 ### Key Sections Included:
 1. **Badges** - Visual indicators for version/license
 2. **Features** - Quick overview of capabilities
@@ -56,6 +53,6 @@ go test -coverprofile=coverage.out
 
 ### From Source
 ```bash
-git clone (https://github.com/Leul0M/CreditCard_Validator.git)
+git clone https://github.com/Leul0M/CreditCard_Validator.git
 cd credit-card-validator
 go build -o ccvalidator
